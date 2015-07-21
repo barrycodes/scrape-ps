@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Threading;
 using mshtml;
+using System.IO;
 
 namespace MainInterface
 {
@@ -119,109 +120,183 @@ namespace MainInterface
 			webBrowser1.Url = new Uri(@"http://www.pluralsight.com");
 		}
 
-		private void InjectScript(string scriptName, string scriptContents, bool runScript = false)
+		private class WishlistItem
 		{
-			var scriptElement = webBrowser1.Document.CreateElement("script");
-			((IHTMLScriptElement)scriptElement.DomElement).text = "function " + scriptName + "() { " + scriptContents + "}";
-			webBrowser1.Document.GetElementsByTagName("head")[0].AppendChild(scriptElement);
-			if (runScript)
-				webBrowser1.Document.InvokeScript(scriptName);
+			public string Url { get; set; }
+			public int StartIndex { get; set; }
+			public WishlistItem(string url, int startIndex = 0)
+			{
+				Url = url;
+				StartIndex = startIndex;
+			}
 		}
 
-		private void InjectRaw(string script)
+		private Queue<WishlistItem> wishlist;
+		private WishlistItem currentWishItem;
+
+		private WishlistItem[] LoadWishlist()
 		{
-			var scriptElement = webBrowser1.Document.CreateElement("script");
-			((IHTMLScriptElement)scriptElement.DomElement).text = script;
-			webBrowser1.Document.GetElementsByTagName("head")[0].AppendChild(scriptElement);
+			List<WishlistItem> results = new List<WishlistItem>();
+			using (FileStream readFile = new FileStream("wishlist.txt", FileMode.Open, FileAccess.Read))
+			{
+				using (StreamReader reader = new StreamReader(readFile))
+				{
+					string textline = reader.ReadLine();
+					while (textline != null)
+					{
+						if (textline.Length > 0 && !textline.StartsWith(";"))
+						{
+							string[] parts = textline.Split(new char[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
+							int startIndex = 0;
+							if (parts.Length >= 2)
+								startIndex = int.Parse(parts[1]);
+
+							results.Add(new WishlistItem(parts[0], startIndex));
+						}
+						textline = reader.ReadLine();
+					}
+				}
+			}
+			return results.ToArray();
 		}
 
-		private int mode = -1;
+		private void NextWishlistItem()
+		{
+			if (wishlist.Count >= 1)
+			{
+				currentWishItem = wishlist.Dequeue();
+				StartPage(currentWishItem.Url);
+			}
+			else
+			{
+				timer1.Stop();
+			}
+		}
+
+		private void StartAll()
+		{
+			wishlist = new Queue<WishlistItem>(LoadWishlist());
+
+			NextWishlistItem();
+		}
+
+		private void StartPage(string url)
+		{
+			timer1.Stop();
+			initialized = false;
+			timer1.Interval = 5000;
+			timer1.Start();
+			webBrowser1.Url = new Uri(url);
+		}
 
 		private void startToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			mode = 1;
-			timer1.Start();
-			webBrowser1.Url = new Uri(@"http://www.pluralsight.com/courses/developing-extensible-software");
+			StartAll();
+			// StartPage(@"http://www.pluralsight.com/courses/developing-extensible-software");
 		}
 
-		private const string Script1 = @"
+//        private const string Script1 = @"
+//
+//				$(document).ready(function () {
+//					setTimeout(function () {
+//						
+//						//alert('arr!');
+//						var moduleContainer = $('#table-of-contents > div.row > div.small-12 > div.section-container');
+//
+//						//alert(moduleContainer.length);
+//
+//						var expandAll = function () {
+//							var modules = moduleContainer.children('div.section');
+//							//alert(modules.length);
+//							modules.each(function () {
+//								$(this).click();
+//							});
+//						};
+//
+//						expandAll();
+//
+//					}, 5000);
+//				});
+//				
+//				//var fnGet
+//
+//			";
 
-				$(document).ready(function () {
-					setTimeout(function () {
-						
-						//alert('arr!');
-						var moduleContainer = $('#table-of-contents > div.row > div.small-12 > div.section-container');
+//        private const string Script_All = @"
+//
+//		function ClickItem() {
+//			var clipIndex = arguments[0];
+//			$('#table-of-contents > div.row > div.small-12 > div.section-container > div.section > div.content > ul > li > a').eq(clipIndex).click();
+//		}
+//		
+//		function GetAllTimes() {
+//			var results = [];
+//			var allItems = $('#table-of-contents > div.row > div.small-12 > div.section-container > div.section > div.content > ul > li > div.action-icon-list > span.toc-time');
+//			allItems.each(function () {
+//				var timeText = $(this).text();
+//				var splits = timeText.split(':');
+//				var seconds = (+splits[0]) * 60 + (+splits[1]);
+//				results.push(seconds);
+//			});
+//			return JSON.stringify(results);
+//		}
+//
+//		";
 
-						//alert(moduleContainer.length);
-
-						var expandAll = function () {
-							var modules = moduleContainer.children('div.section');
-							//alert(modules.length);
-							modules.each(function () {
-								$(this).click();
-							});
-						};
-
-						expandAll();
-
-					}, 5000);
-				});
-				
-				//var fnGet
-
-			";
-
-		private const string Script_All = @"
-
-		function ClickItem() {
-			var clipIndex = arguments[0];
-			$('#table-of-contents > div.row > div.small-12 > div.section-container > div.section > div.content > ul > li > a').eq(clipIndex).click();
-		}
-		
-		function GetAllTimes() {
-			var results = [];
-			var allItems = $('#table-of-contents > div.row > div.small-12 > div.section-container > div.section > div.content > ul > li > div.action-icon-list > span.toc-time');
-			allItems.each(function () {
-				var timeText = $(this).text();
-				var splits = timeText.split(':');
-				var seconds = (+splits[0]) * 60 + (+splits[1]);
-				results.push(seconds);
-			});
-			return JSON.stringify(results);
-		}
-
-		";
-
-string scr1 = @"$('#table-of-contents > div.row > div.small-12 > div.section-container > div.section:nth-child(1) > p.title > a.ng-binding').click();";
-string scr2 = @"$('#table-of-contents > div > div > div.section-container > div.section:nth-child(1) > div.content:nth-child(3) > ul > li > a > h5').click();";
-string scr3 = @"alert($('#table-of-contents > div > div > div.section-container > div.section:nth-child(1) > div.content:nth-child(3) > ul > li > a[ng-click] > h5.ng-binding').text());";
-string scr4 = @"alert($('#table-of-contents > div.row > div.small-12 > div.section-container > div.section:nth-child(1) > div.content:nth-child(3) > ul > li > div.action-icon-list > span.toc-time').text());";
-string scr5 = @"$('#table-of-contents > div.row > div.small-12 > div.section-container > div.section:nth-child(1) > p.title > a.ng-binding').click();";
+//string scr1 = @"$('#table-of-contents > div.row > div.small-12 > div.section-container > div.section:nth-child(1) > p.title > a.ng-binding').click();";
+//string scr2 = @"$('#table-of-contents > div > div > div.section-container > div.section:nth-child(1) > div.content:nth-child(3) > ul > li > a > h5').click();";
+//string scr3 = @"alert($('#table-of-contents > div > div > div.section-container > div.section:nth-child(1) > div.content:nth-child(3) > ul > li > a[ng-click] > h5.ng-binding').text());";
+//string scr4 = @"alert($('#table-of-contents > div.row > div.small-12 > div.section-container > div.section:nth-child(1) > div.content:nth-child(3) > ul > li > div.action-icon-list > span.toc-time').text());";
+//string scr5 = @"$('#table-of-contents > div.row > div.small-12 > div.section-container > div.section:nth-child(1) > p.title > a.ng-binding').click();";
 
 
 		private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
 		{
 		}
 
+		private bool initialized;
+
+		private void Initialize()
+		{
+			ScriptHelper.InjectScript(webBrowser1);
+			allTimes = ScriptHelper.GetAllTimes(webBrowser1);
+			allTimesIndex = currentWishItem.StartIndex;
+			timer1.Interval = 2000;
+		}
+
+		private void NextStep()
+		{
+			if (allTimesIndex < allTimes.Length)
+			{
+				int delaySeconds = allTimes[allTimesIndex];
+				delaySeconds += new Random().Next(60);
+				delaySeconds += 5;
+				timer1.Interval = (int)TimeSpan.FromSeconds(delaySeconds).TotalMilliseconds;
+				ScriptHelper.ClickItem(webBrowser1, allTimesIndex);
+				timer2.Start();
+
+				++allTimesIndex;
+			}
+			else NextWishlistItem();
+		}
+
+		private int[] allTimes;
+		private int allTimesIndex;
+
 		private void timer1_Tick(object sender, EventArgs e)
 		{
-			if (mode >= 0)
+			DateTime now = DateTime.Now;
+			if (now.Hour >= 7 && now.Hour < 20)
 			{
-				int oldMode = mode++;
-				if (mode > 100)
-					mode = 0;
-				switch (oldMode)
+				if (!initialized)
 				{
-					case 1: InjectScript("someName0", Script1, true); break;
-					case 2: InjectRaw(Script_All); break;
-					case 5:
-						
-						string r = (string)webBrowser1.Document.InvokeScript("GetAllTimes");
-						string[] nums = r.Split(new char[] { '[', ']', ',' }, StringSplitOptions.RemoveEmptyEntries);
-						int[] times = nums.Select(s => int.Parse(s)).ToArray();
+					Initialize();
 
-						var h = times;
-						break;
+					initialized = true;
+				}
+				else
+				{
+					NextStep();
 				}
 			}
 		}
@@ -238,6 +313,12 @@ string scr5 = @"$('#table-of-contents > div.row > div.small-12 > div.section-con
 
 		private void closePlayerToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			ClosePlayer();
+		}
+
+		private void timer2_Tick(object sender, EventArgs e)
+		{
+			timer2.Stop();
 			ClosePlayer();
 		}
     }

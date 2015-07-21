@@ -37,13 +37,14 @@
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.actionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.closePlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-			this.actionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.closePlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.timer2 = new System.Windows.Forms.Timer(this.components);
 			this.contextMenuStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -105,6 +106,29 @@
 			this.exitToolStripMenuItem.Text = "E&xit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
+			// actionsToolStripMenuItem
+			// 
+			this.actionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startToolStripMenuItem,
+            this.closePlayerToolStripMenuItem});
+			this.actionsToolStripMenuItem.Name = "actionsToolStripMenuItem";
+			this.actionsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+			this.actionsToolStripMenuItem.Text = "&Actions";
+			// 
+			// startToolStripMenuItem
+			// 
+			this.startToolStripMenuItem.Name = "startToolStripMenuItem";
+			this.startToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+			this.startToolStripMenuItem.Text = "&Start";
+			this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
+			// 
+			// closePlayerToolStripMenuItem
+			// 
+			this.closePlayerToolStripMenuItem.Name = "closePlayerToolStripMenuItem";
+			this.closePlayerToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+			this.closePlayerToolStripMenuItem.Text = "&Close player";
+			this.closePlayerToolStripMenuItem.Click += new System.EventHandler(this.closePlayerToolStripMenuItem_Click);
+			// 
 			// helpToolStripMenuItem
 			// 
 			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -131,33 +155,15 @@
 			this.webBrowser1.TabIndex = 3;
 			this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
 			// 
-			// actionsToolStripMenuItem
-			// 
-			this.actionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startToolStripMenuItem,
-            this.closePlayerToolStripMenuItem});
-			this.actionsToolStripMenuItem.Name = "actionsToolStripMenuItem";
-			this.actionsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-			this.actionsToolStripMenuItem.Text = "&Actions";
-			// 
-			// startToolStripMenuItem
-			// 
-			this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-			this.startToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.startToolStripMenuItem.Text = "&Start";
-			this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
-			// 
 			// timer1
 			// 
-			this.timer1.Interval = 4000;
+			this.timer1.Interval = 5000;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
-			// closePlayerToolStripMenuItem
+			// timer2
 			// 
-			this.closePlayerToolStripMenuItem.Name = "closePlayerToolStripMenuItem";
-			this.closePlayerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.closePlayerToolStripMenuItem.Text = "&Close player";
-			this.closePlayerToolStripMenuItem.Click += new System.EventHandler(this.closePlayerToolStripMenuItem_Click);
+			this.timer2.Interval = 3300;
+			this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
 			// 
 			// MainForm
 			// 
@@ -199,6 +205,7 @@
 		private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.ToolStripMenuItem closePlayerToolStripMenuItem;
+		private System.Windows.Forms.Timer timer2;
     }
 }
 
