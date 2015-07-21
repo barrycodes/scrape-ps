@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Reflection;
+using System.Threading;
+using mshtml;
 
 namespace MainInterface
 {
@@ -110,6 +112,79 @@ namespace MainInterface
 		private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			StoreSettings();
+		}
+
+		private void MainForm_Load(object sender, EventArgs e)
+		{
+			webBrowser1.Url = new Uri(@"http://www.pluralsight.com");
+		}
+
+		private void InjectScript(string scriptName, string scriptContents, bool runScript = false)
+		{
+			var scriptElement = webBrowser1.Document.CreateElement("script");
+			((IHTMLScriptElement)scriptElement.DomElement).text = "function " + scriptName + "() { " + scriptContents + "}";
+			webBrowser1.Document.GetElementsByTagName("head")[0].AppendChild(scriptElement);
+			if (runScript)
+				webBrowser1.Document.InvokeScript(scriptName);
+		}
+		private int mode = -1;
+
+		private void startToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			mode = 1;
+			timer1.Start();
+			webBrowser1.Url = new Uri(@"http://www.pluralsight.com/courses/developing-extensible-software");
+		}
+
+		private const string Script1 = @"
+
+				$(document).ready(function () {
+					setTimeout(function () {
+						
+						alert('arr!');
+						var moduleContainer = $('#table-of-contents > div.row > div.small-12 > div.section-container');
+
+						alert(moduleContainer.length);
+
+						var expandAll = function () {
+							var modules = moduleContainer.children('div.section');
+							alert(modules.length);
+							modules.each(function () {
+								$(this).click();
+							});
+						};
+
+						expandAll();
+
+					}, 5000);
+				});
+				
+				//var fnGet
+
+			";
+
+string scr1 = @"$('#table-of-contents > div.row > div.small-12 > div.section-container > div.section:nth-child(1) > p.title > a.ng-binding').click();";
+string scr2 = @"$('#table-of-contents > div > div > div.section-container > div.section:nth-child(1) > div.content:nth-child(3) > ul > li > a > h5').click();";
+string scr3 = @"alert($('#table-of-contents > div > div > div.section-container > div.section:nth-child(1) > div.content:nth-child(3) > ul > li > a[ng-click] > h5.ng-binding').text());";
+string scr4 = @"alert($('#table-of-contents > div.row > div.small-12 > div.section-container > div.section:nth-child(1) > div.content:nth-child(3) > ul > li > div.action-icon-list > span.toc-time').text());";
+string scr5 = @"$('#table-of-contents > div.row > div.small-12 > div.section-container > div.section:nth-child(1) > p.title > a.ng-binding').click();";
+
+
+		private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+		{
+		}
+
+		private void timer1_Tick(object sender, EventArgs e)
+		{
+			if (mode >= 0)
+			{
+				switch (mode)
+				{
+					case 1: InjectScript("someName0", Script1, true); break;
+				}
+				if (++mode > 100)
+					mode = 0;
+			}
 		}
     }
 }
