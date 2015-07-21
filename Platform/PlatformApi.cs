@@ -18,6 +18,8 @@ namespace Platform
 		/// </summary>
 		public static readonly uint WM_SHOWME = User32.RegisterWindowMessage("WM_SHOWME");
 
+		public const uint WM_CLOSE = 0x0010;
+
 		public class WindowInfo
 		{
 			public string Title { get; set; }

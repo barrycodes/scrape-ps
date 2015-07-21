@@ -43,6 +43,7 @@
 			this.actionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.closePlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.contextMenuStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -125,6 +126,7 @@
 			this.webBrowser1.Location = new System.Drawing.Point(0, 24);
 			this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
 			this.webBrowser1.Name = "webBrowser1";
+			this.webBrowser1.ScriptErrorsSuppressed = true;
 			this.webBrowser1.Size = new System.Drawing.Size(880, 481);
 			this.webBrowser1.TabIndex = 3;
 			this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
@@ -132,7 +134,8 @@
 			// actionsToolStripMenuItem
 			// 
 			this.actionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startToolStripMenuItem});
+            this.startToolStripMenuItem,
+            this.closePlayerToolStripMenuItem});
 			this.actionsToolStripMenuItem.Name = "actionsToolStripMenuItem";
 			this.actionsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
 			this.actionsToolStripMenuItem.Text = "&Actions";
@@ -148,6 +151,13 @@
 			// 
 			this.timer1.Interval = 4000;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			// 
+			// closePlayerToolStripMenuItem
+			// 
+			this.closePlayerToolStripMenuItem.Name = "closePlayerToolStripMenuItem";
+			this.closePlayerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.closePlayerToolStripMenuItem.Text = "&Close player";
+			this.closePlayerToolStripMenuItem.Click += new System.EventHandler(this.closePlayerToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -188,6 +198,7 @@
 		private System.Windows.Forms.ToolStripMenuItem actionsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
 		private System.Windows.Forms.Timer timer1;
+		private System.Windows.Forms.ToolStripMenuItem closePlayerToolStripMenuItem;
     }
 }
 

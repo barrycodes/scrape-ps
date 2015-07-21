@@ -127,6 +127,14 @@ namespace MainInterface
 			if (runScript)
 				webBrowser1.Document.InvokeScript(scriptName);
 		}
+
+		private void InjectRaw(string script)
+		{
+			var scriptElement = webBrowser1.Document.CreateElement("script");
+			((IHTMLScriptElement)scriptElement.DomElement).text = script;
+			webBrowser1.Document.GetElementsByTagName("head")[0].AppendChild(scriptElement);
+		}
+
 		private int mode = -1;
 
 		private void startToolStripMenuItem_Click(object sender, EventArgs e)
@@ -141,14 +149,14 @@ namespace MainInterface
 				$(document).ready(function () {
 					setTimeout(function () {
 						
-						alert('arr!');
+						//alert('arr!');
 						var moduleContainer = $('#table-of-contents > div.row > div.small-12 > div.section-container');
 
-						alert(moduleContainer.length);
+						//alert(moduleContainer.length);
 
 						var expandAll = function () {
 							var modules = moduleContainer.children('div.section');
-							alert(modules.length);
+							//alert(modules.length);
 							modules.each(function () {
 								$(this).click();
 							});
@@ -162,6 +170,27 @@ namespace MainInterface
 				//var fnGet
 
 			";
+
+		private const string Script_All = @"
+
+		function ClickItem() {
+			var clipIndex = arguments[0];
+			$('#table-of-contents > div.row > div.small-12 > div.section-container > div.section > div.content > ul > li > a').eq(clipIndex).click();
+		}
+		
+		function GetAllTimes() {
+			var results = [];
+			var allItems = $('#table-of-contents > div.row > div.small-12 > div.section-container > div.section > div.content > ul > li > div.action-icon-list > span.toc-time');
+			allItems.each(function () {
+				var timeText = $(this).text();
+				var splits = timeText.split(':');
+				var seconds = (+splits[0]) * 60 + (+splits[1]);
+				results.push(seconds);
+			});
+			return JSON.stringify(results);
+		}
+
+		";
 
 string scr1 = @"$('#table-of-contents > div.row > div.small-12 > div.section-container > div.section:nth-child(1) > p.title > a.ng-binding').click();";
 string scr2 = @"$('#table-of-contents > div > div > div.section-container > div.section:nth-child(1) > div.content:nth-child(3) > ul > li > a > h5').click();";
@@ -178,13 +207,38 @@ string scr5 = @"$('#table-of-contents > div.row > div.small-12 > div.section-con
 		{
 			if (mode >= 0)
 			{
-				switch (mode)
+				int oldMode = mode++;
+				if (mode > 100)
+					mode = 0;
+				switch (oldMode)
 				{
 					case 1: InjectScript("someName0", Script1, true); break;
+					case 2: InjectRaw(Script_All); break;
+					case 5:
+						
+						string r = (string)webBrowser1.Document.InvokeScript("GetAllTimes");
+						string[] nums = r.Split(new char[] { '[', ']', ',' }, StringSplitOptions.RemoveEmptyEntries);
+						int[] times = nums.Select(s => int.Parse(s)).ToArray();
+
+						var h = times;
+						break;
 				}
-				if (++mode > 100)
-					mode = 0;
 			}
+		}
+
+		private void ClosePlayer()
+		{
+			Platform.PlatformApi.WindowInfo[] windows = Platform.PlatformApi.GetAllWindowsInfo(false);
+			foreach (Platform.PlatformApi.WindowInfo window in windows)
+				if (window.Title.StartsWith("http://www.pluralsight") && window.Title.EndsWith("Internet Explorer"))
+				{
+					Platform.User32.PostMessage(window.Handle, Platform.PlatformApi.WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
+				}
+		}
+
+		private void closePlayerToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			ClosePlayer();
 		}
     }
 }
