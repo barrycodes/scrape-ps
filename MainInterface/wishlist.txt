@@ -1,5 +1,6 @@
 ﻿; awesome stuff here
 ; all this stuff
+; comments like this
 http://www.pluralsight.com/courses/developing-extensible-software	44
 http://www.pluralsight.com/courses/building-multi-client-end-to-end-service-oriented-applications
 http://www.pluralsight.com/courses/csharp-6-whats-new
@@ -24,3 +25,12 @@ http://www.pluralsight.com/courses/deploying-ios-apps
 http://www.pluralsight.com/courses/introduction-ios7-whats-new
 http://www.pluralsight.com/courses/ios-data-fundamentals
 http://www.pluralsight.com/courses/augmented-reality-android-devices-getting-started	12
+http://www.pluralsight.com/courses/confident-coding-automated-testing-aspdotnet-mvc
+http://www.pluralsight.com/courses/defensive-coding-csharp
+http://www.pluralsight.com/courses/refactoring-fundamentals
+http://www.pluralsight.com/courses/aspdotnet-mvc-testing-from-scratch
+http://www.pluralsight.com/courses/writing-clean-code-humans
+http://www.pluralsight.com/courses/startup-best-practices
+http://www.pluralsight.com/courses/provable-code
+http://www.pluralsight.com/courses/tactical-design-patterns-dotnet-managing-responsibilities
+http://www.pluralsight.com/courses/software-process-management
