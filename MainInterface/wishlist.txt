@@ -1,10 +1,26 @@
 ﻿; awesome stuff here
 ; all this stuff
 ; comments like this
-;http://www.pluralsight.com/courses/developing-extensible-software	44
+;
+;
+;
+;
+; done
+;
+; http://www.pluralsight.com/courses/developing-extensible-software	44
+;
+;
+;
+; singles
+;
 http://www.pluralsight.com/courses/building-multi-client-end-to-end-service-oriented-applications	149
 http://www.pluralsight.com/courses/csharp-6-whats-new
 http://www.pluralsight.com/courses/integrating-aspdotnet-mvc-facebook-graphapi
+;
+;
+;
+; c# learning path
+;
 http://www.pluralsight.com/courses/csharp-fundamentals-csharp5
 http://www.pluralsight.com/courses/csharp-fundamentals-2
 http://www.pluralsight.com/courses/vs2012-intro-part1
@@ -19,11 +35,21 @@ http://www.pluralsight.com/courses/async-parallel-app-design
 http://www.pluralsight.com/courses/net-regular-expressions
 http://www.pluralsight.com/courses/cryptography-introduction-dotnet
 http://www.pluralsight.com/courses/aspdotnet-web-services-introduction
+;
+;
+;
+; ios learning path
+;
 http://www.pluralsight.com/courses/beginning-ios7-development
 http://www.pluralsight.com/courses/ios7-fundamentals
 http://www.pluralsight.com/courses/deploying-ios-apps
 http://www.pluralsight.com/courses/introduction-ios7-whats-new
 http://www.pluralsight.com/courses/ios-data-fundamentals
+;
+;
+;
+; singles
+;
 http://www.pluralsight.com/courses/augmented-reality-android-devices-getting-started	12
 http://www.pluralsight.com/courses/confident-coding-automated-testing-aspdotnet-mvc
 http://www.pluralsight.com/courses/defensive-coding-csharp
@@ -34,3 +60,17 @@ http://www.pluralsight.com/courses/startup-best-practices
 http://www.pluralsight.com/courses/provable-code
 http://www.pluralsight.com/courses/tactical-design-patterns-dotnet-managing-responsibilities
 http://www.pluralsight.com/courses/software-process-management
+;
+;
+;
+; new singles
+;
+http://www.pluralsight.com/courses/cross-platform-ios-android-visual-studio-csharp
+http://www.pluralsight.com/courses/cross-platform-ios-android-visual-studio-csharp-pt2
+http://www.pluralsight.com/courses/building-cross-platform-mobile-apps-csharp-xamarin-azure
+http://www.pluralsight.com/courses/building-mvc4-ios-android-apps-servicestack-xamarin-csharp
+http://www.pluralsight.com/courses/monogame
+http://www.pluralsight.com/courses/android-beginner-app-inventor
+http://www.pluralsight.com/courses/android-beginner-java-introduction
+http://www.pluralsight.com/courses/android-beginner-platform-overview
+http://www.pluralsight.com/courses/building-game-android-pc-java
