@@ -19,6 +19,12 @@ namespace MainInterface
 		[Serializable]
 		private class MySettings
 		{
+			public int DelayPercent { get; set; }
+			public int DelaySeconds { get; set; }
+			public int DelayRandomSeconds { get; set; }
+			public int DelayCloseWindowMilliseconds { get; set; }
+			public DateTime ScheduleStartTime { get; set; }
+			public DateTime ScheduleStopTime { get; set; }
 		}
 
 		private FileVersionInfo assemblyInfo;

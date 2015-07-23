@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WinFormsProject1")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("PS Scraper")]
+[assembly: AssemblyDescription("Tool for automatically recording PluralSight.com videos")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("@barrycodes")]
-[assembly: AssemblyProduct("WinFormsProject1")]
+[assembly: AssemblyProduct("PS Scraper")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
