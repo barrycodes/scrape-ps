@@ -376,5 +376,15 @@ namespace MainInterface
 		{
 			StopAll();
 		}
+
+		private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			using (OptionsForm form = new OptionsForm())
+			{
+				form.Settings = settings;
+				if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+					settings = form.Settings;
+			}
+		}
     }
 }
