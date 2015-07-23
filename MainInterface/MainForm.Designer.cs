@@ -58,7 +58,7 @@
 			// 
 			this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
 			this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-			this.notifyIcon1.Text = "notifyIcon1";
+			this.notifyIcon1.Text = "PsScraper";
 			this.notifyIcon1.Visible = true;
 			this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
 			// 
@@ -126,14 +126,14 @@
 			// startToolStripMenuItem
 			// 
 			this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-			this.startToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+			this.startToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.startToolStripMenuItem.Text = "&Start";
 			this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
 			// 
 			// closePlayerToolStripMenuItem
 			// 
 			this.closePlayerToolStripMenuItem.Name = "closePlayerToolStripMenuItem";
-			this.closePlayerToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+			this.closePlayerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.closePlayerToolStripMenuItem.Text = "&Close player";
 			this.closePlayerToolStripMenuItem.Click += new System.EventHandler(this.closePlayerToolStripMenuItem_Click);
 			// 

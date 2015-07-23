@@ -52,7 +52,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_18B9F192C285C68090B3F1D7E9717FB8"
+        "OwnerKey" = "8:_0861B423EF6DAA915E4E2D3B890D8147"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -64,7 +64,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0861B423EF6DAA915E4E2D3B890D8147"
+        "OwnerKey" = "8:_18B9F192C285C68090B3F1D7E9717FB8"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -85,6 +85,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -101,6 +109,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -137,11 +153,6 @@
             "AssemblyAsmDisplayName" = "8:CommonResources, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_0861B423EF6DAA915E4E2D3B890D8147"
-                    {
-                    "Name" = "8:CommonResources.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:CommonResources.dll"
             "TargetName" = "8:"
@@ -168,11 +179,6 @@
             "AssemblyAsmDisplayName" = "8:Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_18B9F192C285C68090B3F1D7E9717FB8"
-                    {
-                    "Name" = "8:Platform.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Platform.dll"
             "TargetName" = "8:"
@@ -219,11 +225,6 @@
             "AssemblyAsmDisplayName" = "8:CommonTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_7682F02259775C721B4C2B6F28194380"
-                    {
-                    "Name" = "8:CommonTypes.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:CommonTypes.dll"
             "TargetName" = "8:"
@@ -309,20 +310,20 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:WinFormsProject1"
-        "ProductCode" = "8:{A5A61417-F2D0-42B5-A11C-626A533EFAD0}"
-        "PackageCode" = "8:{2B132893-5B4E-44B0-BD97-86C9FE0F5A57}"
+        "ProductName" = "8:PsScraper"
+        "ProductCode" = "8:{12B03A5F-4CB8-4B8B-99A0-02F21E806ABF}"
+        "PackageCode" = "8:{B5EDE480-0D1F-495E-9291-ABED97EF9CD2}"
         "UpgradeCode" = "8:{6A46112B-500C-4959-83D0-A57796955E11}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0"
+        "ProductVersion" = "8:1.1"
         "Manufacturer" = "8:@barrycodes"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:WinFormsProject1"
+        "Title" = "8:PsScraper"
         "Subject" = "8:"
         "ARPCONTACT" = "8:@barrycodes"
         "Keywords" = "8:"
