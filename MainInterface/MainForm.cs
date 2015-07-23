@@ -173,6 +173,12 @@ namespace MainInterface
 			}
 		}
 
+		private void StopAll()
+		{
+			timer1.Stop();
+			initialized = false;
+		}
+
 		private void StartAll()
 		{
 			wishlist = new Queue<WishlistItem>(LoadWishlist());
@@ -320,6 +326,17 @@ namespace MainInterface
 		{
 			timer2.Stop();
 			ClosePlayer();
+		}
+
+		private void newbrowserWindowToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			WebBrowserForm form = new WebBrowserForm();
+			form.Show();
+		}
+
+		private void stopToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			StopAll();
 		}
     }
 }

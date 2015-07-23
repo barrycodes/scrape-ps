@@ -45,6 +45,9 @@
 			this.webBrowser1 = new System.Windows.Forms.WebBrowser();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.timer2 = new System.Windows.Forms.Timer(this.components);
+			this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.newbrowserWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.contextMenuStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -84,6 +87,7 @@
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.actionsToolStripMenuItem,
+            this.viewToolStripMenuItem,
             this.helpToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
@@ -110,6 +114,7 @@
 			// 
 			this.actionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.startToolStripMenuItem,
+            this.stopToolStripMenuItem,
             this.closePlayerToolStripMenuItem});
 			this.actionsToolStripMenuItem.Name = "actionsToolStripMenuItem";
 			this.actionsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
@@ -165,6 +170,28 @@
 			this.timer2.Interval = 3300;
 			this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
 			// 
+			// viewToolStripMenuItem
+			// 
+			this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newbrowserWindowToolStripMenuItem});
+			this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+			this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+			this.viewToolStripMenuItem.Text = "&View";
+			// 
+			// newbrowserWindowToolStripMenuItem
+			// 
+			this.newbrowserWindowToolStripMenuItem.Name = "newbrowserWindowToolStripMenuItem";
+			this.newbrowserWindowToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.newbrowserWindowToolStripMenuItem.Text = "New &browser window";
+			this.newbrowserWindowToolStripMenuItem.Click += new System.EventHandler(this.newbrowserWindowToolStripMenuItem_Click);
+			// 
+			// stopToolStripMenuItem
+			// 
+			this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
+			this.stopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.stopToolStripMenuItem.Text = "Sto&p";
+			this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,6 +233,9 @@
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.ToolStripMenuItem closePlayerToolStripMenuItem;
 		private System.Windows.Forms.Timer timer2;
+		private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem newbrowserWindowToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
     }
 }
 
