@@ -13,7 +13,7 @@ namespace MainInterface
 			/// <summary>
 			/// Unique value to name our mutex which has computer-wide scope
 			/// </summary>
-			public const string MutexGuid = "{75E9BE72-9CDE-4636-9F3A-A61436880500}";
+			public const string MutexGuid = "{73C8CDCD-DFB6-49B0-8B8F-F24D17A0DEB5}";
 		}
 
 		/// <summary>
