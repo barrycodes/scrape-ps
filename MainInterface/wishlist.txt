@@ -1,8 +1,8 @@
 ﻿; awesome stuff here
 ; all this stuff
 ; comments like this
-http://www.pluralsight.com/courses/developing-extensible-software	44
-http://www.pluralsight.com/courses/building-multi-client-end-to-end-service-oriented-applications
+;http://www.pluralsight.com/courses/developing-extensible-software	44
+http://www.pluralsight.com/courses/building-multi-client-end-to-end-service-oriented-applications	149
 http://www.pluralsight.com/courses/csharp-6-whats-new
 http://www.pluralsight.com/courses/integrating-aspdotnet-mvc-facebook-graphapi
 http://www.pluralsight.com/courses/csharp-fundamentals-csharp5
