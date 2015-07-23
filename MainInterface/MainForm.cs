@@ -25,6 +25,21 @@ namespace MainInterface
 			public int DelayCloseWindowMilliseconds { get; set; }
 			public DateTime ScheduleStartTime { get; set; }
 			public DateTime ScheduleStopTime { get; set; }
+			public static MySettings Default
+			{
+				get
+				{
+					return new MySettings
+					{
+						DelayPercent = 100,
+						DelaySeconds = 5,
+						DelayRandomSeconds = 60,
+						DelayCloseWindowMilliseconds = 3300,
+						ScheduleStartTime = DateTime.Now.Date + TimeSpan.FromHours(7),
+						ScheduleStopTime = DateTime.Now.Date + TimeSpan.FromHours(20),
+					};
+				}
+			}
 		}
 
 		private FileVersionInfo assemblyInfo;
@@ -32,21 +47,28 @@ namespace MainInterface
 		private bool intentionalClose;
 
 		private MySettings settings;
-		
+
+		private Random random;
+
         public MainForm()
         {
             InitializeComponent();
 
 			intentionalClose = false;
+			random = new Random();
 
 			assemblyInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
 
 			LoadSettings();
+
+			timer2.Interval = settings.DelayCloseWindowMilliseconds;
         }
 
 		private void LoadSettings()
 		{
-			settings = (MySettings)CommonTypes.SettingsManager.LoadSettings(assemblyInfo.CompanyName, assemblyInfo.ProductName) ?? new MySettings();
+			settings =
+				(MySettings)CommonTypes.SettingsManager.LoadSettings(assemblyInfo.CompanyName, assemblyInfo.ProductName)
+					?? MySettings.Default;
 		}
 
 		private void StoreSettings()
@@ -280,10 +302,20 @@ namespace MainInterface
 		{
 			if (allTimesIndex < allTimes.Length)
 			{
-				int delaySeconds = allTimes[allTimesIndex];
-				delaySeconds += new Random().Next(60);
-				delaySeconds += 5;
+				int delaySeconds = 0;
+
+				int clipDuration = allTimes[allTimesIndex];
+				delaySeconds += (int)((float)clipDuration * ((float)settings.DelayPercent / 100F));
+
+				int randomSeconds = 1;
+				if (settings.DelayRandomSeconds > 1)
+					randomSeconds = random.Next(settings.DelayRandomSeconds);
+				delaySeconds += randomSeconds;
+
+				delaySeconds += settings.DelaySeconds;
+
 				timer1.Interval = (int)TimeSpan.FromSeconds(delaySeconds).TotalMilliseconds;
+
 				ScriptHelper.ClickItem(webBrowser1, allTimesIndex);
 				timer2.Start();
 
@@ -298,7 +330,7 @@ namespace MainInterface
 		private void timer1_Tick(object sender, EventArgs e)
 		{
 			DateTime now = DateTime.Now;
-			if (now.Hour >= 7 && now.Hour < 20)
+			if (now.TimeOfDay >= settings.ScheduleStartTime.TimeOfDay && now.TimeOfDay < settings.ScheduleStopTime.TimeOfDay)
 			{
 				if (!initialized)
 				{
