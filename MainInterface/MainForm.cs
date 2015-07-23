@@ -17,7 +17,7 @@ namespace MainInterface
     public partial class MainForm : Form
     {
 		[Serializable]
-		private class MySettings
+		public class MySettings
 		{
 			public int DelayPercent { get; set; }
 			public int DelaySeconds { get; set; }
