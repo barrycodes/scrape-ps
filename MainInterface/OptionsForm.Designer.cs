@@ -31,30 +31,30 @@
 			this.okButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+			this.durationPercentControl = new System.Windows.Forms.NumericUpDown();
 			this.label1 = new System.Windows.Forms.Label();
-			this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+			this.delaySecondsControl = new System.Windows.Forms.NumericUpDown();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
-			this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+			this.delayRandomSecondsControl = new System.Windows.Forms.NumericUpDown();
 			this.label7 = new System.Windows.Forms.Label();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.scheduleStartTimeControl = new System.Windows.Forms.DateTimePicker();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+			this.scheduleStopTimeControl = new System.Windows.Forms.DateTimePicker();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.label9 = new System.Windows.Forms.Label();
-			this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+			this.delayCloseWindowControl = new System.Windows.Forms.NumericUpDown();
 			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.durationPercentControl)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.delaySecondsControl)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.delayRandomSecondsControl)).BeginInit();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.delayCloseWindowControl)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// okButton
@@ -85,12 +85,12 @@
 			this.groupBox1.Controls.Add(this.label7);
 			this.groupBox1.Controls.Add(this.label4);
 			this.groupBox1.Controls.Add(this.label5);
-			this.groupBox1.Controls.Add(this.numericUpDown3);
+			this.groupBox1.Controls.Add(this.delayRandomSecondsControl);
 			this.groupBox1.Controls.Add(this.label3);
 			this.groupBox1.Controls.Add(this.label2);
-			this.groupBox1.Controls.Add(this.numericUpDown2);
+			this.groupBox1.Controls.Add(this.delaySecondsControl);
 			this.groupBox1.Controls.Add(this.label1);
-			this.groupBox1.Controls.Add(this.numericUpDown1);
+			this.groupBox1.Controls.Add(this.durationPercentControl);
 			this.groupBox1.Location = new System.Drawing.Point(12, 12);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(282, 185);
@@ -98,23 +98,23 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Delay before each recording";
 			// 
-			// numericUpDown1
+			// durationPercentControl
 			// 
-			this.numericUpDown1.Location = new System.Drawing.Point(18, 29);
-			this.numericUpDown1.Maximum = new decimal(new int[] {
+			this.durationPercentControl.Location = new System.Drawing.Point(18, 29);
+			this.durationPercentControl.Maximum = new decimal(new int[] {
             1600,
             0,
             0,
             0});
-			this.numericUpDown1.Minimum = new decimal(new int[] {
+			this.durationPercentControl.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-			this.numericUpDown1.Name = "numericUpDown1";
-			this.numericUpDown1.Size = new System.Drawing.Size(55, 20);
-			this.numericUpDown1.TabIndex = 0;
-			this.numericUpDown1.Value = new decimal(new int[] {
+			this.durationPercentControl.Name = "durationPercentControl";
+			this.durationPercentControl.Size = new System.Drawing.Size(55, 20);
+			this.durationPercentControl.TabIndex = 0;
+			this.durationPercentControl.Value = new decimal(new int[] {
             100,
             0,
             0,
@@ -129,18 +129,18 @@
 			this.label1.TabIndex = 1;
 			this.label1.Text = "% of the duration of previous video clip";
 			// 
-			// numericUpDown2
+			// delaySecondsControl
 			// 
-			this.numericUpDown2.Location = new System.Drawing.Point(18, 88);
-			this.numericUpDown2.Maximum = new decimal(new int[] {
+			this.delaySecondsControl.Location = new System.Drawing.Point(18, 88);
+			this.delaySecondsControl.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-			this.numericUpDown2.Name = "numericUpDown2";
-			this.numericUpDown2.Size = new System.Drawing.Size(66, 20);
-			this.numericUpDown2.TabIndex = 2;
-			this.numericUpDown2.Value = new decimal(new int[] {
+			this.delaySecondsControl.Name = "delaySecondsControl";
+			this.delaySecondsControl.Size = new System.Drawing.Size(66, 20);
+			this.delaySecondsControl.TabIndex = 2;
+			this.delaySecondsControl.Value = new decimal(new int[] {
             5,
             0,
             0,
@@ -182,23 +182,23 @@
 			this.label5.TabIndex = 6;
 			this.label5.Text = "PLUS";
 			// 
-			// numericUpDown3
+			// delayRandomSecondsControl
 			// 
-			this.numericUpDown3.Location = new System.Drawing.Point(123, 150);
-			this.numericUpDown3.Maximum = new decimal(new int[] {
+			this.delayRandomSecondsControl.Location = new System.Drawing.Point(123, 150);
+			this.delayRandomSecondsControl.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-			this.numericUpDown3.Minimum = new decimal(new int[] {
+			this.delayRandomSecondsControl.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-			this.numericUpDown3.Name = "numericUpDown3";
-			this.numericUpDown3.Size = new System.Drawing.Size(49, 20);
-			this.numericUpDown3.TabIndex = 5;
-			this.numericUpDown3.Value = new decimal(new int[] {
+			this.delayRandomSecondsControl.Name = "delayRandomSecondsControl";
+			this.delayRandomSecondsControl.Size = new System.Drawing.Size(49, 20);
+			this.delayRandomSecondsControl.TabIndex = 5;
+			this.delayRandomSecondsControl.Value = new decimal(new int[] {
             60,
             0,
             0,
@@ -213,22 +213,22 @@
 			this.label7.TabIndex = 10;
 			this.label7.Text = "Random delay up to";
 			// 
-			// dateTimePicker1
+			// scheduleStartTimeControl
 			// 
-			this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-			this.dateTimePicker1.Location = new System.Drawing.Point(89, 29);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.ShowUpDown = true;
-			this.dateTimePicker1.Size = new System.Drawing.Size(114, 20);
-			this.dateTimePicker1.TabIndex = 3;
-			this.dateTimePicker1.Value = new System.DateTime(2015, 7, 23, 7, 0, 0, 0);
+			this.scheduleStartTimeControl.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.scheduleStartTimeControl.Location = new System.Drawing.Point(89, 29);
+			this.scheduleStartTimeControl.Name = "scheduleStartTimeControl";
+			this.scheduleStartTimeControl.ShowUpDown = true;
+			this.scheduleStartTimeControl.Size = new System.Drawing.Size(114, 20);
+			this.scheduleStartTimeControl.TabIndex = 3;
+			this.scheduleStartTimeControl.Value = new System.DateTime(2015, 7, 23, 7, 0, 0, 0);
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.Controls.Add(this.dateTimePicker2);
+			this.groupBox2.Controls.Add(this.scheduleStopTimeControl);
 			this.groupBox2.Controls.Add(this.label8);
 			this.groupBox2.Controls.Add(this.label6);
-			this.groupBox2.Controls.Add(this.dateTimePicker1);
+			this.groupBox2.Controls.Add(this.scheduleStartTimeControl);
 			this.groupBox2.Location = new System.Drawing.Point(312, 12);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(225, 185);
@@ -254,20 +254,20 @@
 			this.label8.TabIndex = 6;
 			this.label8.Text = "Daily stop";
 			// 
-			// dateTimePicker2
+			// scheduleStopTimeControl
 			// 
-			this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-			this.dateTimePicker2.Location = new System.Drawing.Point(89, 55);
-			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.ShowUpDown = true;
-			this.dateTimePicker2.Size = new System.Drawing.Size(114, 20);
-			this.dateTimePicker2.TabIndex = 7;
-			this.dateTimePicker2.Value = new System.DateTime(2015, 7, 23, 20, 0, 0, 0);
+			this.scheduleStopTimeControl.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.scheduleStopTimeControl.Location = new System.Drawing.Point(89, 55);
+			this.scheduleStopTimeControl.Name = "scheduleStopTimeControl";
+			this.scheduleStopTimeControl.ShowUpDown = true;
+			this.scheduleStopTimeControl.Size = new System.Drawing.Size(114, 20);
+			this.scheduleStopTimeControl.TabIndex = 7;
+			this.scheduleStopTimeControl.Value = new System.DateTime(2015, 7, 23, 20, 0, 0, 0);
 			// 
 			// groupBox3
 			// 
 			this.groupBox3.Controls.Add(this.label9);
-			this.groupBox3.Controls.Add(this.numericUpDown4);
+			this.groupBox3.Controls.Add(this.delayCloseWindowControl);
 			this.groupBox3.Location = new System.Drawing.Point(12, 215);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.Size = new System.Drawing.Size(525, 69);
@@ -284,23 +284,23 @@
 			this.label9.TabIndex = 6;
 			this.label9.Text = "milliseconds";
 			// 
-			// numericUpDown4
+			// delayCloseWindowControl
 			// 
-			this.numericUpDown4.Location = new System.Drawing.Point(15, 29);
-			this.numericUpDown4.Maximum = new decimal(new int[] {
+			this.delayCloseWindowControl.Location = new System.Drawing.Point(15, 29);
+			this.delayCloseWindowControl.Maximum = new decimal(new int[] {
             60000,
             0,
             0,
             0});
-			this.numericUpDown4.Minimum = new decimal(new int[] {
+			this.delayCloseWindowControl.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-			this.numericUpDown4.Name = "numericUpDown4";
-			this.numericUpDown4.Size = new System.Drawing.Size(66, 20);
-			this.numericUpDown4.TabIndex = 5;
-			this.numericUpDown4.Value = new decimal(new int[] {
+			this.delayCloseWindowControl.Name = "delayCloseWindowControl";
+			this.delayCloseWindowControl.Size = new System.Drawing.Size(66, 20);
+			this.delayCloseWindowControl.TabIndex = 5;
+			this.delayCloseWindowControl.Value = new decimal(new int[] {
             3300,
             0,
             0,
@@ -327,14 +327,14 @@
 			this.Text = "Options";
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.durationPercentControl)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.delaySecondsControl)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.delayRandomSecondsControl)).EndInit();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.delayCloseWindowControl)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -347,19 +347,19 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.NumericUpDown numericUpDown3;
+		private System.Windows.Forms.NumericUpDown delayRandomSecondsControl;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.NumericUpDown numericUpDown2;
+		private System.Windows.Forms.NumericUpDown delaySecondsControl;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.NumericUpDown numericUpDown1;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
+		private System.Windows.Forms.NumericUpDown durationPercentControl;
+		private System.Windows.Forms.DateTimePicker scheduleStartTimeControl;
 		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.DateTimePicker dateTimePicker2;
+		private System.Windows.Forms.DateTimePicker scheduleStopTimeControl;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.NumericUpDown numericUpDown4;
+		private System.Windows.Forms.NumericUpDown delayCloseWindowControl;
 	}
 }
