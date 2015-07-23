@@ -15,5 +15,17 @@ namespace MainInterface
 		{
 			InitializeComponent();
 		}
+
+		private void cancelButton_Click(object sender, EventArgs e)
+		{
+			DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			Close();
+		}
+
+		private void okButton_Click(object sender, EventArgs e)
+		{
+			DialogResult = System.Windows.Forms.DialogResult.OK;
+			Close();
+		}
 	}
 }
