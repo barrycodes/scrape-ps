@@ -193,6 +193,9 @@ namespace MainInterface
 			if (wishlist.Count >= 1)
 			{
 				currentWishItem = wishlist.Dequeue();
+
+				allVideosIndex = currentWishItem.StartIndex;
+
 				StartPage(currentWishItem.Url);
 			}
 			else
@@ -293,18 +296,19 @@ namespace MainInterface
 		private void Initialize()
 		{
 			ScriptHelper.InjectScript(webBrowser1);
-			allTimes = ScriptHelper.GetAllTimes(webBrowser1);
-			allTimesIndex = currentWishItem.StartIndex;
+			allVideos = ScriptHelper.GetAllVideosInfo(webBrowser1);
 			timer1.Interval = 2000;
 		}
 
 		private void NextStep()
 		{
-			if (allTimesIndex < allTimes.Length)
+			if (allVideosIndex < allVideos.Length)
 			{
 				int delaySeconds = 0;
 
-				int clipDuration = allTimes[allTimesIndex];
+				ScriptHelper.VideoInfo info = allVideos[allVideosIndex];
+
+				int clipDuration = info.DurationSeconds;
 				delaySeconds += (int)((float)clipDuration * ((float)settings.DelayPercent / 100F));
 
 				int randomSeconds = 1;
@@ -316,16 +320,55 @@ namespace MainInterface
 
 				timer1.Interval = (int)TimeSpan.FromSeconds(delaySeconds).TotalMilliseconds;
 
-				ScriptHelper.ClickItem(webBrowser1, allTimesIndex);
+				info.TriggerTime = DateTime.Now;
+				ScriptHelper.ClickItem(webBrowser1, allVideosIndex);
 				timer2.Start();
 
-				++allTimesIndex;
+				++allVideosIndex;
 			}
-			else NextWishlistItem();
+			else
+			{
+				timer1.Stop();
+				ConcludeWishlistItem();
+				NextWishlistItem();
+			}
 		}
 
-		private int[] allTimes;
-		private int allTimesIndex;
+		private void ConcludeWishlistItem()
+		{
+			try
+			{
+				DirectoryInfo recordingFolder =
+					new DirectoryInfo(
+						Path.Combine(
+							Environment.GetFolderPath(Environment.SpecialFolder.MyVideos),
+							"WMR Recordings"));
+
+				var files = recordingFolder.GetFiles();
+
+				foreach (var info in allVideos)
+				{
+					if (!string.IsNullOrWhiteSpace(info.Name) && info.TriggerTime != DateTime.MinValue)
+					{
+						try
+						{
+							var foundFile = files.First(f => Math.Abs((f.CreationTime - info.TriggerTime).Ticks) < TimeSpan.FromSeconds(7).Ticks);
+
+							if (foundFile != null)
+							{
+								string path = foundFile.FullName;
+								foundFile.MoveTo(info.Name + foundFile.Extension);
+							}
+						}
+						catch { }
+					}
+				}
+			}
+			catch { }
+		}
+
+		private ScriptHelper.VideoInfo[] allVideos;
+		private int allVideosIndex;
 
 		private void timer1_Tick(object sender, EventArgs e)
 		{
