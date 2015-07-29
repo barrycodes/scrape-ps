@@ -29,34 +29,32 @@
 ;
 ; done
 ;
-; http://www.pluralsight.com/courses/developing-extensible-software	44
-; http://www.pluralsight.com/courses/building-multi-client-end-to-end-service-oriented-applications	195
-;
-;
-;
-; singles
-;
-http://www.pluralsight.com/courses/csharp-6-whats-new	10
-http://www.pluralsight.com/courses/integrating-aspdotnet-mvc-facebook-graphapi
+; http://www.pluralsight.com/courses/developing-extensible-software
+; http://www.pluralsight.com/courses/building-multi-client-end-to-end-service-oriented-applications
+; http://www.pluralsight.com/courses/csharp-6-whats-new
+; http://www.pluralsight.com/courses/integrating-aspdotnet-mvc-facebook-graphapi
+; http://www.pluralsight.com/courses/csharp-fundamentals-csharp5
+; http://www.pluralsight.com/courses/csharp-fundamentals-2
+; http://www.pluralsight.com/courses/intro-visual-studio-2013
+; http://www.pluralsight.com/courses/intro-visual-studio-2013-part2
+; http://www.pluralsight.com/courses/csharp-collections
+; http://www.pluralsight.com/courses/practical-reflection-dotnet
+; http://www.pluralsight.com/courses/linq-fundamentals
+; http://www.pluralsight.com/courses/linq-data-access
+; http://www.pluralsight.com/courses/clr-threading
+; http://www.pluralsight.com/courses/async-parallel-app-design
+;  --------  the following course was retired and was replaced by......
+;  http://www.pluralsight.com/courses/csharp-newincs5
+;  --------  ...this course.
+;  http://www.pluralsight.com/courses/skeet-async
+; http://www.pluralsight.com/courses/net-regular-expressions
+; http://www.pluralsight.com/courses/cryptography-introduction-dotnet
 ;
 ;
 ;
 ; c# learning path
 ;
-http://www.pluralsight.com/courses/csharp-fundamentals-csharp5
-http://www.pluralsight.com/courses/csharp-fundamentals-2
-http://www.pluralsight.com/courses/intro-visual-studio-2013
-http://www.pluralsight.com/courses/intro-visual-studio-2013-part2
-http://www.pluralsight.com/courses/csharp-collections
-http://www.pluralsight.com/courses/practical-reflection-dotnet
-http://www.pluralsight.com/courses/linq-fundamentals
-http://www.pluralsight.com/courses/linq-data-access
-http://www.pluralsight.com/courses/clr-threading
-http://www.pluralsight.com/courses/csharp-newincs5
-http://www.pluralsight.com/courses/async-parallel-app-design
-http://www.pluralsight.com/courses/net-regular-expressions
-http://www.pluralsight.com/courses/cryptography-introduction-dotnet
-http://www.pluralsight.com/courses/aspdotnet-web-services-introduction
+http://www.pluralsight.com/courses/aspdotnet-web-services-introduction	31
 ;
 ;
 ;
