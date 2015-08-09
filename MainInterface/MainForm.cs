@@ -162,9 +162,13 @@ namespace MainInterface
 		private Queue<WishlistItem> wishlist;
 		private WishlistItem currentWishItem;
 
+		private string[] wishlistLines;
+
+
 		private WishlistItem[] LoadWishlist()
 		{
 			List<WishlistItem> results = new List<WishlistItem>();
+			List<string> allWishlistLines = new List<string>();
 			using (FileStream readFile = new FileStream("wishlist.txt", FileMode.Open, FileAccess.Read))
 			{
 				using (StreamReader reader = new StreamReader(readFile))
@@ -172,6 +176,8 @@ namespace MainInterface
 					string textline = reader.ReadLine();
 					while (textline != null)
 					{
+						allWishlistLines.Add(textline);
+
 						if (textline.Length > 0 && !textline.StartsWith(";"))
 						{
 							string[] parts = textline.Split(new char[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
@@ -329,9 +335,14 @@ namespace MainInterface
 			else
 			{
 				timer1.Stop();
+				WriteWishlist();
 				ConcludeWishlistItem();
 				NextWishlistItem();
 			}
+		}
+
+		private void WriteWishlist()
+		{
 		}
 
 		private void ConcludeWishlistItem()
